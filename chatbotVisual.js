@@ -54,6 +54,8 @@ async function enviarMensaje() {
   const promptUsuario = generarPromptUsuario(contexto, mensajeDelUsuario);
   const promptSistema = generarPromptSistema("asistente virtual");
 
+  console.log(promptUsuario);
+  console.log(promptSistema);
 
   agregarMensaje("usuario", mensajeDelUsuario);
   mensajeInput.value = "";
@@ -69,7 +71,7 @@ async function enviarMensaje() {
       body: JSON.stringify({
         promptSistema: promptSistema,
         promptUsuario: promptUsuario
-      }),
+      })
 
     });
 
@@ -90,7 +92,7 @@ async function enviarMensaje() {
     mensajeLoading.remove();
 
     const mensajeDelModelo = formatearRespuestaBot(data.respuesta);
-    console.log(mensajeDelModelo)
+    console.log("Este es el mensaje del modelo", mensajeDelModelo)
     agregarMensaje("bot", mensajeDelModelo, true); // Si hay HTML
   } catch (error) {
     mensajeLoading.remove();
