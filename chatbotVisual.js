@@ -5,8 +5,8 @@ const botonEnviarMensaje = document.getElementById("enviar-mensaje");
 const mensajeInput = document.getElementById("mensaje");
 const mensajesListado = document.getElementById("mensajes");
 
-import { generarContexto } from "../lib/extraerContexto.js";
-import { generarPromptSistema, generarPromptUsuario } from "../lib/armarPrompts.js";
+import { generarContexto } from "./lib/extraerContexto.js";
+import { generarPromptSistema, generarPromptUsuario } from "./lib/armarPrompts.js";
 
 
 
