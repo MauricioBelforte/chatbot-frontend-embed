@@ -50,10 +50,10 @@ async function enviarMensaje() {
   const mensajeDelUsuario = mensajeInput.value.trim();
   if (!mensajeDelUsuario) return;
 
-/*   const contexto = await generarContexto(mensajeDelUsuario);
+  const contexto = await generarContexto(mensajeDelUsuario);
   const promptUsuario = generarPromptUsuario(contexto, mensajeDelUsuario);
   const promptSistema = generarPromptSistema("asistente virtual");
- */
+
 
   agregarMensaje("usuario", mensajeDelUsuario);
   mensajeInput.value = "";
@@ -61,27 +61,27 @@ async function enviarMensaje() {
   // ⏳ Mostrar animación mientras llega la respuesta
   const mensajeLoading = mostrarAnimacionRespondiendo();
 
-/*   try {
+  try {
     // Peticion a mi api server.js
-    const res = await fetch("/api/chatbotApi", {
+    const res = await fetch("https://chatbot-backend-vercel.vercel.app/api/chatbotApi", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        systemPrompt: promptSistema,
-        userPrompt: promptUsuario
+        promptSistema: promptSistema,
+        promptUsuario: promptUsuario
       }),
 
-    }); */
-
-     try {
-    // 👉 Los prompts ya vienen armados desde afuera
-    const { systemPrompt, userPrompt } = await obtenerPromptsExternos(mensajeDelUsuario);
-
-    const res = await fetch("/api/chatbotApi", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ systemPrompt, userPrompt })
     });
+
+    /*   try {
+     // 👉 Los prompts ya vienen armados desde afuera
+     const { systemPrompt, userPrompt } = await obtenerPromptsExternos(mensajeDelUsuario);
+ 
+     const res = await fetch("/api/chatbotApi", {
+       method: "POST",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify({ systemPrompt, userPrompt })
+     }); */
 
 
     const data = await res.json();
