@@ -72,11 +72,6 @@ Este proyecto está pensado para:
 - Usarse como módulo frontend desacoplado dentro de ecosistemas más amplios
 
 ---
-¡Obvio, Mauricio! Para completar el README del frontend, te sumo la sección de licencia al final, siguiendo el formato habitual en proyectos open-source.
-
-Como subiste el archivo `LICENSE`, voy a asumir que estás usando **MIT** (la más común para proyectos embebibles y plug-and-play). Si usás otra, avisame y lo adaptamos.
-
----
 
 ### 📄 Licencia
 
