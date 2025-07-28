@@ -1,19 +1,22 @@
 
-## 🧩 chatbot-frontend-embed
+## 🧩 chatbot-frontend-funcional
 
-**Frontend estático y embebible para IA conversacional**, desacoplado del backend, listo para integrarse en landings, portfolios o demos que consumen respuestas desde APIs externas.
+**Frontend funcional del chatbot IA**, con lógica desacoplada y presentación autónoma. Diseñado para mostrar el comportamiento del motor IA en producción, incluyendo armado de prompts, extracción de contexto y renderizado estilo chat.
+
+Este front se conecta con el fetch en `https://motor-ia-backend.vercel.app/api/chatbotApi`
 
 ---
 
-### 🚀 ¿Qué es esto?
+### 🚀 ¿Qué incluye este módulo?
 
-Este repositorio contiene una interfaz HTML + JS minimalista que permite:
+Este repositorio contiene una interfaz completa que permite:
 
-- Enviar prompts a un motor IA externo vía `fetch`
-- Renderizar respuestas en pantalla tipo chat
-- Ser embebida fácilmente en cualquier página estática
+- Renderizar respuestas IA en pantalla tipo chat (`chatbotVisual.js`)
+- Construir prompts personalizados (`lib/armarPrompts.js`)
+- Extraer y procesar contexto desde respuestas IA (`lib/extraerContexto.js`)
+- Ejecutarse como demo técnica directa desde `index.html`
 
-> Ideal para demos de motores IA custom, portfolios técnicos o pruebas con backends desacoplados como [`chatbot-backend-vercel`](https://github.com/MauricioBelforte/chatbot-backend-vercel)
+> Parte clave del ecosistema IA modular, junto con [`motor-ia-backend`](https://github.com/MauricioBelforte/motor-ia-backend)
 
 ---
 
@@ -21,10 +24,14 @@ Este repositorio contiene una interfaz HTML + JS minimalista que permite:
 
 ```
 /
-├── index.html          # Interfaz principal
-├── style.css           # Estilos embebibles
-├── script.js           # Lógica básica: prompts + fetch + render
-├── README.md           # Este archivo :)
+├── index.html              # Interfaz principal con layout independiente
+├── styles.css              # Estilos visuales tipo chat
+├── chatbotVisual.js        # Renderizado y conexión con backend
+├── lib/
+│   ├── armarPrompts.js     # Construcción de prompts IA
+│   ├── extraerContexto.js  # Procesamiento de respuestas IA
+├── LICENSE                 # Licencia MIT
+├── README.md               # Este archivo 📘
 ```
 
 ---
@@ -34,51 +41,41 @@ Este repositorio contiene una interfaz HTML + JS minimalista que permite:
 1. Cloná el repo:
 
 ```bash
-git clone https://github.com/MauricioBelforte/chatbot-frontend-embed.git
+git clone https://github.com/MauricioBelforte/chatbot-frontend-funcional.git
 ```
 
-2. Configurá el endpoint en `script.js`:
+2. Configurá el endpoint en `chatbotVisual.js`:
 
 ```js
-const API_ENDPOINT = 'https://mi-backend.vercel.app/api/chat';
+const API_ENDPOINT = 'https://motor-ia-backend.vercel.app/api/chatbotApi';
 ```
 
-3. Abrí `index.html` directamente o hostealo en GitHub Pages / Netlify / cualquier proveedor estático.
+3. Abrí `index.html` directamente o desplegalo como demo estática en GitHub Pages / Netlify.
 
 ---
 
-### 🎯 Integración con backend desacoplado
+### 🎯 ¿Por qué es funcional?
 
-Podés conectar este frontend con motores como `chatbot-backend-vercel`, que aceptan prompts y devuelven respuestas IA vía HTTP.
-
-> No requiere lógica interna de generación. Solo envía y renderiza.
+Este módulo no sólo visualiza: incorpora lógica IA propia. Desde cómo se arma el prompt hasta cómo se filtra y presenta la respuesta, este frontend representa fielmente el comportamiento del sistema en producción.
 
 ---
 
-### 🔐 Seguridad y buenas prácticas
+### 📚 Este módulo en el ecosistema
 
-- Este repo no maneja claves ni lógica confidencial.
-- No incluye `.env`: el endpoint se define directamente en `script.js`.
-- Podés agregar soporte para `.env` si lo usás en proyectos con bundlers o frameworks.
-
----
-
-### 👥 Colaboración y adaptación
-
-Este proyecto está pensado para:
-
-- Ser clonado y adaptado a cualquier caso de uso IA embebido
-- Servir como template para desarrolladores que quieren mostrar motores custom
-- Usarse como módulo frontend desacoplado dentro de ecosistemas más amplios
+| Repositorio                   | Rol dentro del sistema                      | Estado       |
+|-------------------------------|---------------------------------------------|--------------|
+| `chatbot-frontend-funcional` | Frontend funcional del chatbot IA personal  | Renombrado ✅ |
 
 ---
 
-### 📄 Licencia
+### 🧠 ¿Por qué no tiene backend propio?
 
-Este proyecto está bajo la licencia MIT.  
-Podés usarlo, modificarlo y distribuirlo libremente, siempre que incluyas el aviso de copyright correspondiente.
+Este módulo **no incluye carpeta `api/` ni backend directo en Vercel** porque está diseñado como *frontend desacoplado*, conectado a un motor IA ya desplegado:
 
-> Consultá el archivo [`LICENSE`](./LICENSE) para más detalles.
+- Se evita duplicar lógica backend en cada repo, manteniendo el sistema modular y con responsabilidad clara por bloque.
+- El backend principal vive en [`motor-ia-backend`](https://github.com/MauricioBelforte/motor-ia-backend), que **sí expone el endpoint `/api/chatbotApi`** vía Vercel usando la carpeta `api/`.
+- Este enfoque permite escalar, versionar o reemplazar el motor IA sin tocar la interfaz.
+
+> Así, cada módulo cumple su rol específico: este front visualiza e interpreta, el backend procesa y responde.
 
 ---
-
